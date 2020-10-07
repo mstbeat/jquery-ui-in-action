@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interaction: Droppable</title>
+    <style>
+      .item {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background: purple;
+        margin: 5px;
+        padding: 5px;
+      }
+      #area1, #area2 {
+        width: 400px;
+        height: 400px;
+      }
+      #main, #area1, #area2 {
+        float: left;
+        margin: 25px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#item1, #item3").draggable({scope:"pink"});
+        $("#item2, #item4").draggable({scope:"purple"});
+        $("#area2").droppable({
+          scope:"pink",
+          drop:function(){
+            alert("A pink item is dropped!");
+          }
+        });
+        $("#area1").droppable({
+          scope:"purple",
+          drop:function(){
+            alert("A purple item is dropped!");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="item1" class="item" style="background: pink;"></div>
+      <div id="item2" class="item" style="background: purple;"></div>
+      <div id="item3" class="item" style="background: pink;"></div>
+      <div id="item4" class="item" style="background: purple;"></div>
+    </div>
+    <div id="area1" style="border: 5px solid purple;"></div>
+    <div id="area2" style="border: 5px solid pink;"></div>
+  </body>
+</html>

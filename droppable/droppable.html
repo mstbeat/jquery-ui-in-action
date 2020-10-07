@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interaction: Droppable</title>
+    <style>
+      #item {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background: purple;
+        margin: 50px;
+        float: left;
+      }
+      #area {
+        width: 400px;
+        height: 400px;
+        border: 2px solid black;
+        float: left;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#item").draggable();
+        $("#area").droppable({
+          drop:function(){
+            alert("The item is dropped!");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="item"></div>
+    <div id="area"></div>
+  </body>
+</html>
