@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interaction: Draggable</title>
+    <style>
+      #main {
+        width: 500px;
+        height: 500px;
+        margin: 0px auto;
+        border: 2px solid black;
+      }
+      .sub {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        margin: 5px;
+        padding: 5px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".sub, p").draggable({cancel:"#sub1"});
+        $("p:first").draggable({disabled:true});
+      })
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <div class="sub" id="sub1" style="background: red;"></div>
+      <div class="sub" id="sub2" style="background: green;"></div>
+      <div class="sub" id="sub3" style="background: blue;"></div>
+      <p>This is a paragraph.</p>
+      <p>This is another paragraph.</p>
+    </div>
+  </body>
+</html>
