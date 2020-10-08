@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interaction: Resizable</title>
+    <style>
+      #main {
+        width: 800px;
+        height: 400px;
+        border: 2px solid black;
+        margin: 0px auto;
+      }
+      #box1 {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+        margin: 50px;
+        background: purple;
+      }
+      #box2 {
+        width: 100px;
+        height: 20px;
+        border: 1px solid black;
+        margin: 50px;
+        background: pink;
+        font-size: 12px;
+      }
+      .custom-helper {
+        background: silver;
+        border: 1px solid black;
+        opacity: .5;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#box1").resizable({
+          aspectRatio: true,
+          stop: function(){
+            alert("Height: " + $(this).css("height") + "\nWidth: " + $(this).css("width"));
+          }
+        });
+        $("#box2").resizable({
+          aspectRatio: 3,
+          stop: function(){
+            alert("Height: " + $(this).css("height") + "\nWidth: " + $(this).css("width"));
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="box1" style="background: purple;"></div>
+    <div id="box2" style="background: pink;">Test content!</div>
+  </body>
+</html>

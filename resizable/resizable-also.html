@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interaction: Resizable</title>
+    <style>
+      #box1, #box2 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        margin: 50px;
+        border-radius: 10px;
+        float: left;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#box1").resizable({alsoResize: "#box2"});
+      });
+    </script>
+  </head>
+  <body>
+    <div id="box1" style="background: pink;"></div>
+    <div id="box2" style="background: purple;"></div>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interaction: Resizable</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background: pink;
+        border: 1px solid black;
+        margin: 50px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("img, div").resizable({
+          handles:"ne, se, nw, sw",
+          autoHide: true
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="box"></div>
+  </body>
+</html>
