@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interaction: Sortable</title>
+    <style>
+      ol {
+        list-style: none;
+        width: 170px;
+        height: 480px;
+      }
+      li {
+        height: 30px;
+        width: 150px;
+        border: 1px solid black;
+        margin: 2px;
+        font-size: 20px;
+        text-align: center;
+      }
+      #fruits li {
+        background-color: pink;
+      }
+      #vegetables li {
+        background-color: silver;
+      }
+      fieldset {
+        float: left;
+        margin: 30px;
+        width: 200px;
+        height: 300px;
+        border: 5px solid black;
+      }
+      img {
+        width: 20px;
+        height: 20px;
+        float: right;
+        padding: 3px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#fruits").sortable({
+          tolerance:"pointer"
+        });
+        $("#vegetables").sortable({
+          revert:"slow"
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <fieldset id="left">
+      <legend><b>FRUITS</b></legend>
+      <ol id="fruits">
+        <li class="yes" id="mango">Mango<img src="../images/robot.png" /></li>
+        <li class="no" id="banana">Banana<img src="../images/robot.png" /></li>
+        <li class="yes" id="apple">Apple<img src="../images/robot.png" /></li>
+        <li class="no" id="strawberry">Strawberry<img src="../images/robot.png" /></li>
+        <li class="yes" id="cherry">Cherry<img src="../images/robot.png" /></li>
+        <li class="no" id="orange">Orange<img src="../images/robot.png" /></li>
+        <li class="yes" id="grape">Grape<img src="../images/robot.png" /></li>
+      </ol>
+    </fieldset>
+    <fieldset id="right">
+      <legend><b>VEGETABLES</b></legend>
+      <ol id="vegetables">
+        <li class="no" id="pumpkin">Pumpkin</li>
+        <li class="no"id="broccoli">Broccoli</li>
+        <li class="yes" id="capsicum">Capsicum</li>
+        <li class="no" id="carrot">Carrot</li>
+        <li class="no" id="potato">Potato</li>
+        <li class="yes"id="tomato">Tomato</li>
+        <li class="no" id="brinjal">Brinjal</li>
+      </ol>
+    </fieldset>
+  </body>
+</html>

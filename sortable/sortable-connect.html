@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interaction: Sortable</title>
+    <style>
+      ol {
+        list-style: none;
+        width: 170px;
+        height: 480px;
+      }
+      li {
+        height: 30px;
+        width: 150px;
+        border: 1px solid black;
+        margin: 2px;
+        font-size: 20px;
+        text-align: center;
+      }
+      #fruits li {
+        background-color: pink;
+      }
+      #vegetables li {
+        background-color: silver;
+         
+      }
+      fieldset {
+        float: left;
+        margin: 30px;
+        width: 200px;
+        height: 500px;
+        border: 5px solid black;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#fruits").sortable({connectWith:"#vegetables"});
+        $("#vegetables").sortable({connectWith:"#fruits"});
+      });
+    </script>
+  </head>
+  <body>
+    <fieldset id="left">
+      <legend><b>FRUITS</b></legend>
+      <ol id="fruits">
+        <li id="mango">Mango</li>
+        <li id="carrot">Carrot</li>
+        <li id="banana">Banana</li>
+        <li id="tomato">Tomato</li>
+        <li id="strawberry">Strawberry</li>
+        <li id="broccoli">Broccoli</li>
+        <li id="orange">Orange</li>
+      </ol>
+    </fieldset>
+    <fieldset id="right">
+      <legend><b>VEGETABLES</b></legend>
+      <ol id="vegetables">
+        <li id="cherry">Cherry</li>
+        <li id="pumpkin">Pumpkin</li>
+        <li id="apple">Apple</li>
+        <li id="capsicum">Capsicum</li>
+        <li id="potato">Potato</li>
+        <li id="grape">Grape</li>
+        <li id="brinjal">Brinjal</li>
+      </ol>
+    </fieldset>
+  </body>
+</html>
