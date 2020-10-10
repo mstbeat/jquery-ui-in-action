@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Accordion</title>
+    <style>
+      #details {
+        width: 400px;
+        height: 200px;
+      }
+      p {
+        text-align: justify;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#details").accordion({
+          animate:5000,
+          beforeActivate:function(event, ui){
+            if($(ui.newHeader).attr("id") == "secret") {
+              $(this).preventDefault();
+            }
+          },
+          activate:function(event, ui){
+            alert("Old Header: " + $(ui.oldHeader).text() + "\n" +
+                  "Old Panel: " + $(ui.oldPanel).text() + "\n" +
+                  "New Header: " + $(ui.newHeader).text() + "\n" +
+                  "Old Panel: " + $(ui.newPanel).text());
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="details">
+      <h2>jQuery</h2>
+      <p>jQuery is a popular JavaScript library which simplifies JavaScript programming.</p>
+      <h2>jQuery UI</h2>
+      <p>jQuery User Interface is built on the top of jQuery. It is useful to design highly interactive web application.</p>
+      <h2>jQuery Mobile</h2>
+      <p>jQuery Mobile is a HTML5-based user interface system designed to make responsive we sites and apps that are accesible on all smartphone, tablet, and desktop devices.</p>
+      <h2 id="secret">Secret Message</h2>
+      <p>This is some secret message!</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Tabs</title>
+    <style>
+      #details {
+        width: 400px;
+        margin: 15px;
+      }
+      p {
+        text-align: justify;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#details").tabs({
+          hide:{duration:3000, effect:"explode"},
+          show:{duration:5000, effect:"highlight"}
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="details">
+      <ul>
+        <li><a href="#jquery">jQuery</a></li>
+        <li><a href="#ui">jQuery UI</a></li>
+        <li><a href="#mobile">jQuery Mobile</a></li>
+      </ul>
+      <p id="jquery">jQuery is a popular JavaScript library which simplifies JavaScript programming.</p>
+      <p id="ui">jQuery User Interface is built on the top of jQuery. It is useful to design highly interactive web application.</p>
+      <p id="mobile">jQuery Mobile is a HTML5-based user interface system designed to make responsive we sites and apps that are accesible on all smartphone, tablet, and desktop devices.</p>
+    </div>
+  </body>
+</html>

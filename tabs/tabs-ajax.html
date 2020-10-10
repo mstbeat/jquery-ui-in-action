@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Tabs</title>
+    <style>
+      #details {
+        width: 600px;
+        margin: 15px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#details").tabs({
+          hide:{duration:2000, effect:"explode"},
+          show:{duration:2000, effect:"highlight"},
+          beforeActivate:function(event, ui) {
+            alert("BEFORE ACTIVATE Old Tab: " + $(ui.oldTab).text() + "\n" +
+            "New Tab: " + $(ui.newTab).text() + "\n" +
+            "Old Panel: " + $(ui.oldPanel).text() + "\n" +
+            "New Panel: " + $(ui.newPanel).text())
+          },
+          activate:function() {
+            alert("ACTIVATE New tab is activated!")
+          },
+          beforeLoad:function(event, ui) {
+            alert("BEFORE LOAD")
+            ui.jqXHR.fail(function() {
+              $(ui.panel).html("Error in loading the tab.");
+            })
+          },
+          load:function(event, ui) {
+            alert("LOAD Tab: " + $(ui.tab).text() + "\n" +
+            "Panel: " + $(ui.panel).text())
+
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="details">
+      <ul>
+        <li><a href="#jquery">jQuery</a></li>
+        <li><a href="trial.html">HTML Page</a></li>
+        <li><a href="test-ajax.txt">Text File</a></li>
+        <li><a href="test.html">Broken</a></li>
+      </ul>
+      <p id="jquery">jQuery is a popular JavaScript library which simplifies JavaScript programming.</p>
+    </div>
+  </body>
+</html>

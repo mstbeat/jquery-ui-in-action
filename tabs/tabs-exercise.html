@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Accordion</title>
+    <style>
+      #details {
+        width: 600px;
+        margin: 15px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#details").tabs();
+        $("#select").change(function() {
+          if($("option:selected").val() === "1") {
+            $("#details").tabs({active:0});
+          }
+          if($("option:selected").val() === "2") {
+            $("#details").tabs({active:1});
+          }
+          if($("option:selected").val() === "3") {
+            $("#details").tabs({active:2});
+          }
+          if($("option:selected").val() === "4") {
+            $("#details").tabs({active:3});
+          }
+          if($("option:selected").val() === "5") {
+            $("#details").tabs({active:4});
+          }
+        })
+      });
+    </script>
+  </head>
+  <body>
+    <div id="details">
+      <ul>
+        <li><a href="#first">FIRST</a></li>
+        <li><a href="#second">SECOND</a></li>
+        <li><a href="#third">THIRD</a></li>
+        <li><a href="#fourth">FOURTH</a></li>
+        <li><a href="#fifth">FIFTH</a></li>
+      </ul>
+      <p id="first">This is the content related to FIRST tab.</p>
+      <p id="second">This is the content related to SECOND tab.</p>
+      <p id="third">This is the content related to THIRD tab.</p>
+      <p id="fourth">This is the content related to FOURTH tab.</p>
+      <p id="fifth">This is the content related to FIFTH tab.</p>
+    </div>
+    <label>Select the tab to activate: </label>
+    <select id="select">
+      <option value="1">FIRST</option>
+      <option value="2">SECOND</option>
+      <option value="3">THIRD</option>
+      <option value="4">FOURTH</option>
+      <option value="5">FIFTH</option>
+    </select>
+  </body>
+</html>

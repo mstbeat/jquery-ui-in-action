@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Accordion</title>
+    <style>
+      #details {
+        width: 400px;
+      }
+      p {
+        text-align: justify;
+      }
+      #added {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#details").accordion();
+        $("#addBtn").click(function() {
+          var newDiv = "<h2>" + $("#header").val() + "</h2><p>" + $("#content").val() + "</p>";
+          $("#details").append(newDiv).accordion("refresh");
+          $("#details").accordion({active:-1});
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="details">
+      <h2>jQuery</h2>
+      <p>jQuery is a popular JavaScript library which simplifies JavaScript programming.</p>
+      <h2>jQuery UI</h2>
+      <p>jQuery User Interface is built on the top of jQuery. It is useful to design highly interactive web application.</p>
+      <h2>jQuery Mobile</h2>
+      <p>jQuery Mobile is a HTML5-based user interface system designed to make responsive we sites and apps that are accesible on all smartphone, tablet, and desktop devices.</p>
+    </div><br><br>
+      <label>Header: </label><input type="text" id="header"><br><br>
+      <label>Content: </label><textarea id="content"></textarea><br><br>
+      <button id="addBtn">Add Accordion</button>
+  </body>
+</html>
