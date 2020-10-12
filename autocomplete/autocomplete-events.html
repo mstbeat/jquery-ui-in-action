@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Autocomplete</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      var currency = [
+        {label:"Angola", value:"Angolan kwanza"},
+        {label:"Cambodia", value:"Cambodian riel"},
+        {label:"Germany", value:"European euro"},
+        {label:"Kuwait", value:"Kuwaiti dinar"},
+        {label:"Nepal", value:"Nepalese rupee"},
+        {label:"Switzerland", value:"Swiss franc"},
+        {label:"Zimbabwe", value:"United States dollar"},
+        {label:"United Kingdom", value:"Pound sterling"},
+        {label:"Sweden", value:"Swedish krona"},
+        {label:"Philippines", value:"Philippine peso"},
+        {label:"Malaysia", value:"Malaysian ringgit"},
+        {label:"Liberia", value:"Leberian dollar"},
+        {label:"India", value:"Indian rupee"}
+      ];
+      $(document).ready(function(){
+        $("#countries").autocomplete({
+          source:currency,
+          // create:function() {
+          //   alert("The autocomplete is created");
+          // },
+          // change:function() {
+          //   alert("The textbox content is changed");
+          // },
+          // search:function() {
+          //   alert("The search is about to begin");
+          // },
+          // response:function() {
+          //   alert("The result is ready");
+          // }
+          // open:function() {
+          //   alert("The suggestion list is displayed");
+          // },
+          // close:function() {
+          //   alert("The suggestion list is closed");
+          // }
+          select:function(event, ui) {
+            $("#result").text((ui.item.label + "'s currency is " + (ui.item.value)));
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <label for="countries">Countries:</label>
+    <input id="countries" type="text" />
+    <div id="result"></div>
+  </body>
+</html>

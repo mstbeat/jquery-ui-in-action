@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Autocomplete</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      var countries = [
+        "Angola",
+        "Cambodia",
+        "Germany",
+        "Kuwait",
+        "Nepal",
+        "Switzerland",
+        "Zimbabwe",
+        "United Kingdom",
+        "Sweden",
+        "Philippines",
+        "Malaysia",
+        "Liberia",
+        "India"
+      ];
+      $(document).ready(function(){
+        var jsonData = '{"120":"John Smith", "122":"Sarah Turner", "124":"Emma White", "125":"Mark Smith"}';
+        var jsObject = JSON.parse(jsonData);
+        $("#names").autocomplete({
+          source:function(request, response) {
+            var filterArray = $.map(jsObject, function(item, index) {
+              if(item.toUpperCase().indexOf(request.term.toUpperCase()) != -1 ) {
+                return {
+                  label:item,
+                  value:index
+                };
+              };
+            })
+            response(filterArray);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <label for="names">Names:</label>
+    <input id="names" type="text" />
+  </body>
+</html>
