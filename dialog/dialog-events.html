@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Dialog</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#overlay").dialog({
+          create:function() {
+            alert("The dialog is created");
+          },
+          open:function() {
+            alert("The dialog is opened");
+          },
+          focus:function() {
+            alert("The dialog is focused");
+          },
+          dragStart:function() {
+            $("#status1").text("Dragging started");
+          },
+          drag:function() {
+            $("#status2").text("The dialog is moving");
+          },
+          dragStop:function() {
+            $("#status1").text("Dragging stopped");
+            $("#status2").text("");
+          },
+          resizeStart:function() {
+            $("#status1").text("Resizing started");
+          },
+          resize:function() {
+            $("#status2").text("The size is changing");
+          },
+          resizeStop:function() {
+            $("#status1").text("Resizing stopped");
+            $("#status2").text("");
+          },
+          beforeClose:function() {
+            alert("The dialog is about to close");
+          },
+          close:function() {
+            $("#status1").text("The dialog is closed");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="status1" style="font-size: 30px;"></div>
+    <div id="status2" style="font-size: 30px;"></div>
+    <div id="overlay" title="First Dialog">
+      <div>This is the first dialog that displays content in an interactive overlay.</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Dialog</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#overlay").dialog({
+          buttons:[
+            {
+              text:"Cancel",
+              icons:{primary:"ui-icon-closethick"},
+              click:function() {
+                $(this).dialog("close");
+              },
+              mouseover:function() {
+                alert("mouseover");
+              }
+            },
+            {
+              text:"Delete",
+              icons:{primary:"ui-icon-check"},
+              click:function(){
+                alert("All the items are deleted.");
+              }
+            }
+          ]
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="overlay" title="Confirmation">
+      <div>Are you sure you want to delete the items permanently? You cannot undo this operation.</div>
+    </div>
+  </body>
+</html>
