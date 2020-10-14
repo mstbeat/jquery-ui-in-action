@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Datepicker</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var holidays = ["1-1-2021", "4-7-2021", "24-11-2020", "25-12-2020"];
+        $("#calendar").datepicker(
+          "dialog",
+          null,
+          function(dateString, datePicker) {
+            alert("You selected: " +dateString);
+            $("#calendar").val(dateString);
+          },
+          null,
+          [150, 50]
+        )
+        // $("#calendar").datepicker({
+        //   minDate:new Date(),
+        //   maxDate:"+10m",
+        //   showOn:"button",
+        //   buttonText:"Open Calendar",
+        //   buttonImage:"../images/robot.png",
+        //   buttonImageOnly:true
+        // });
+        // $(".ui-datepicker-trigger").css({height:"20px", width:"20px"});
+      });
+    </script>
+  </head>
+  <body>
+    Date of Appointment: <input id="calendar" type="text">
+  </body>
+</html>

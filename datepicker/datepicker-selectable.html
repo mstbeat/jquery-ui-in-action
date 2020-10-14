@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Datepicker</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#calendar").datepicker({
+          minDate:new Date(),
+          maxDate:"+2m",
+          // beforeShowDay:$.datepicker.noWeekends
+          beforeShowDay:function(date) {
+            var weekends = $.datepicker.noWeekends(date);
+            var weekdays = [!weekends[0]];
+            return weekdays;
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    Date of Appointment: <input id="calendar" type="text">
+  </body>
+</html>

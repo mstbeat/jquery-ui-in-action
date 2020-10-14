@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Datepicker</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+      .styleholiday .ui-state-default {
+        color: red;
+        background: yellow;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        var holidays = ["1-1-2021", "4-7-2021", "24-11-2020", "25-12-2020"];
+        $("#calendar").datepicker({
+          minDate:new Date(),
+          maxDate:"+10m",
+          duration:3000,
+          showAnim:"shake",
+          showOptions:{times:3}
+        });
+      });
+    </script>
+  </head>
+  <body>
+    Date of Appointment: <input id="calendar" type="text">
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Datepicker</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#calendar").datepicker({
+          onSelect:function(dateString) {
+            var selectedDate = $("#calendar").datepicker("getDate");
+            alert("The date selected is " + selectedDate);
+            alert("The date selected is " + dateString);
+          },
+          onClose:function() {
+            alert("The datepicker is about to close.");
+          },
+          onChangeMonthYear:function(year, month, datepicker) {
+            var monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            alert("Month: " + monthArr[month-1] + "\nYear No: " + year);
+          }
+        });
+        $("#calendar").datepicker("setDate","11/21/2020");
+        $("#btnShow").click(function() {
+          $("#calendar").datepicker("show");
+        });
+        $("#btnHide").click(function() {
+          $("#calendar").datepicker("hide");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    Date of Birth: <input id="calendar" type="text">
+    <button id="btnShow">Show</button>
+    <button id="btnHide">Hide</button>
+  </body>
+</html>
