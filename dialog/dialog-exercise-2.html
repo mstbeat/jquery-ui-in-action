@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Dialog</title>
+    <style>
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".dialogs").eq(1).dialog({
+          title:"My Dialog",
+          position:{at:"left top"},
+          create:function() {
+            $(this).css("color", "blue");
+          }
+        });
+        $(".dialogs").eq(0).dialog({
+          title:"Your Dialog",
+          position:{at:"right bottom"},
+          create:function() {
+            $(this).css("color", "red");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="dialogs">
+      <p>This is your dialog.</p>
+    </div>
+    <div class="dialogs">
+      <p>This is my dialog.</p>
+    </div>
+  </body>
+</html>
