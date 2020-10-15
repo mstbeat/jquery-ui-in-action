@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Progress Bar</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+      .ui-progressbar {
+        border-radius: 25px;
+      }
+      .ui-progressbar-value {
+        background: red;
+        border-radius: 25px;
+        text-align: right;
+        color: black;
+        font-weight: normal;
+      }
+      #maximum {
+        float: right;
+        margin-right: 15px;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        $("#bar1").progressbar({
+          value:10,
+          max:50
+        });
+        var maximum = $("#bar1").progressbar("option", "max");
+        $("#maximum").text(maximum + "%");
+        var current = $("#bar1").progressbar("option", "value");
+        $(".ui-progressbar-value").text(current + "%");
+      });
+    </script>
+  </head>
+  <body>
+    <div id="bar1"><span id="maximum"></span></div>
+  </body>
+</html>

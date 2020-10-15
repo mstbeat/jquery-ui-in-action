@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Progress Bar</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+      .ui-progressbar-value {
+        text-align: right;
+        color: black;
+        font-weight: normal;
+      }
+      #maximum {
+        float: right;
+        margin-right: 15px;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        var newValue;
+        $("#bar").progressbar({
+          value:10,
+          max:50
+        });
+        var maximum = $("#bar").progressbar("option", "max");
+        $("#maximum").text(maximum + "%");
+        var current = $("#bar").progressbar("option", "value");
+        $(".ui-progressbar-value").text(current + "%");
+        $("button").click(function() {
+          current = $("#bar").progressbar("option", "value");
+          var id = $(this).attr("id");
+          if(id == "btnIncrement") {
+            newValue = current + 10;
+          } else {
+            newValue = current - 10;
+          }
+          displayValue();
+        });
+        function displayValue() {
+          $("#bar").progressbar("value", newValue);
+          if(newValue == maximum) {
+            $(".ui-progressbar-value").text("");
+          } else {
+            $(".ui-progressbar-value").text(newValue + "%");
+          }
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="bar"><span id="maximum"></span></div>
+    <button id="btnIncrement">+ 10%</button>
+    <button id="btnDecrement">- 10%</button>
+  </body>
+</html>
