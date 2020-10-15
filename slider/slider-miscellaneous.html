@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Slider</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#mySlider").slider({
+          step:5,
+          animate:1000,
+          orientation:"vertical",
+          change:function(event, ui) {
+            $("#current").text(ui.value);
+          }
+        });
+        var min = $("#mySlider").slider("option", "min");
+        var max = $("#mySlider").slider("option", "max");
+        var current = $("#mySlider").slider("option", "value");
+        $("#current").text(current);
+      });
+    </script>
+  </head>
+  <body>
+    Value: <span id="current"></span>
+    <div id="mySlider"></div>
+  </body>
+</html>

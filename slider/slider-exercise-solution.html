@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Widget: Slider</title>
+<link rel="stylesheet" href="jquery-ui.css">
+<script src="jquery.js"></script>    
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function(){
+	$("#mySlider").slider({min:10, max:50, value:30,
+						  change:function(event, ui){
+							$("#string").css("font-size", ui.value + "px");
+						}});
+	$("#string").css("font-size", $("#mySlider").slider("option", "value") + "px")
+});
+</script>
+</head>
+<body>
+	<p id="string">This is the sample text. This is the sample text.
+	 This is the sample text. This is the sample text.
+	 This is the sample text. This is the sample text.
+	 This is the sample text. This is the sample text.</p>
+	<div id="mySlider"></div>
+</body>
+</html>
