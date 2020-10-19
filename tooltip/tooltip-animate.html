@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Tooltip</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(document).tooltip({
+          hide:{
+            effect:"explode",
+            duration:5000,
+            easing:"linear"
+          },
+          show:{
+            effect:"fold",
+            duration:5000
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>Let's discuss <a href="#" title ="Tooltips are unique!">tooltips</a> in detail.</p>
+    Password: <input type="text" id="pass" title="Password must contain at least one number.">
+  </body>
+</html>

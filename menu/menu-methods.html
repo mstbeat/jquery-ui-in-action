@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Menu</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+      .ui-menu {
+        width: 350px;
+      }
+      a {
+        text-decoration: none;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        var item;
+        $("#myMenu").menu({
+          focus:function(event, ui) {
+            item = ui.item.find(".ui-state-active").text();
+          }
+        });
+        $("#btnRefresh").click(function() {
+          $("#myMenu").append("<li><A href='#'>New Item</a></li>");
+          $("#myMenu").menu("refresh");
+        });
+        $("#btnExpand").click(function() {
+          $("#myMenu").menu("focus", null, $("#myMenu > li:nth-child(2)"));
+          $("#myMenu").menu("previous");
+          $("#myMenu").menu("expand");
+        });
+        $("#btnCollapse").click(function() {
+          $("#myMenu").menu("collapseAll");
+        });
+        $("#btnIsLast").click(function() {
+          $("#myMenu").menu("focus", null, $("#myMenu > li:nth-child(2)"));
+          $("#myMenu").menu("expand");
+          $("#myMenu").menu("focus", null, $("#myMenu > li:nth-child(2) >ul li:nth-child(1)"));
+          $("#myMenu").menu("expand");
+          $("#myMenu").menu("focus", null, $("#myMenu > li:nth-child(2) >ul li:nth-child(1) >ul li:nth-child(1)"));
+          $("#myMenu").menu("expand");
+          var isFirst = $("#myMenu").menu("isLastItem");
+          var msg;
+          if(isFirst == true) {
+            msg = " is the last menu item.";
+          } else {
+            msg = " is not the last menu item.";
+          }
+          alert(item + msg);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <ul id="myMenu">
+      <li><a href="#">Books</a>
+        <ul>
+          <li><a href="#">All Books</a></li>
+          <li><a href="#">New Releases</a></li>
+          <li><a href="#">Best Sellers</a></li>
+          <li><a href="#"><span class="ui-icon ui-icon-bookmark"></span>eBooks</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Computers & Accessories</a>
+        <ul>
+          <li><a href="#">Computers</a>
+            <ul>
+              <li><a href="#">Desktops</a></li>
+              <li><a href="#">Laptops</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Pen Drives</a></li>
+          <li><a href="#">Hard Drives</a></li>
+          <li><a href="#"><span class="ui-icon ui-icon-print"></span>Printers</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Toys</a>
+        <ul>
+          <li><a href="#">Soft Toys</a></li>
+          <li><a href="#">Educational Toys</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button id="btnRefresh">Refresh</button>
+    <button id="btnExpand">Expand</button>
+    <button id="btnCollapse">Collapse</button>
+    <button id="btnIsLast">Is Last</button>
+  </body>
+</html>
