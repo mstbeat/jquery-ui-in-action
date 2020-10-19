@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Spinner</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#mySpinner").spinner({
+          step:5,
+          page:2,
+          icons:{
+            up:"ui-icon-plus",
+            down:"ui-icon-minus"
+          },
+          min:0,
+          max:100
+        });
+        $("#btnStepUp").click(function() {
+          $("#mySpinner").spinner("stepUp", 3);
+        })
+        $("#btnStepDown").click(function() {
+          $("#mySpinner").spinner("stepDown", 2);
+        })
+        $("#btnIsValid").click(function() {
+          var isValid = $("#mySpinner").spinner("isValid");
+          alert(isValid);
+        })
+        $("#btnPageUp").click(function() {
+          $("#mySpinner").spinner("pageUp", 2);
+        })
+        $("#btnPageDown").click(function() {
+          $("#mySpinner").spinner("pageDown", 4);
+        })
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="mySpinner" />
+    <button id="btnStepUp">Step Up</button>
+    <button id="btnStepDown">Step Down</button>
+    <button id="btnIsValid">Is Valid</button>
+    <button id="btnPageUp">Page Up</button>
+    <button id="btnPageDown">Page Down</button>
+  </body>
+</html>
