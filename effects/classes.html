@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>jQuery UI</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        margin: 100px;
+        border: 2px dotted black;
+        background: pink;
+      }
+      .size {
+        width: 200px;
+        height: 200px;
+      }
+      .color {
+        border: 5px solid green;
+        background: red;
+      }
+      .shape {
+        border-radius: 50%;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        $("#btnAdd").click(function() {
+          $("div").addClass(
+            "size color shape",
+            5000,
+            "linear",
+            function() {
+              alert("I am a circle now.")
+            }
+          );
+        })
+        $("#btnRemove").click(function() {
+          $("div").removeClass(
+            "color",
+            5000,
+            "linear",
+            function() {
+              alert("I am a square again.")
+            }
+          );
+        })
+        $("#btnToggle").click(function() {
+          $("div").toggleClass(
+            "size color shape",
+            5000
+          );
+        })
+      });
+    </script>
+  </head>
+  <body>
+    <div id="box">
+    </div>
+    <button id="btnAdd">Add Class</button>
+    <button id="btnRemove">Remove Class</button>
+    <button id="btnToggle">Toggle Class</button>
+  </body>
+</html>
