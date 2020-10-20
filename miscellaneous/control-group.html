@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Control Group</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#group").controlgroup({
+          direction:"vertical",
+          items:{
+            "button": "input[type=button], input[type=submit], input[type=reset], button, a",
+            "controlgroupLabel": ".ui-controlgroup-label",
+            "checkboxradio": "input[type='checkbox'], input[type='radio']",
+            "selectmenu": "select",
+            "spinner": ".ui-spinner-input"
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="group">
+      <select id="language">
+        <option>English</option>
+        <option>Spanish</option>
+        <option>French</option>
+        <option>Hindi</option>
+        <option>Chinese</option>
+        <option>Arabic</option>
+        <option>Russian</option>
+      </select><br>
+      <label for="jquery">jQuery</label>
+      <input type="radio" id="jquery" name="jquerys">
+      <label for="ui">jQuery UI</label>
+      <input type="radio" id="ui" name="jquerys">
+      <label for="mobile">jQuery Mobile</label>
+      <input type="radio" id="mobile" name="jquerys"><br>
+      <a href="#">Click Here</a><br>
+      <label for="spinner" class="ui-controlgroup-label">Your age: </label>
+      <input type="text" id="spinner" class="ui-spinner-input"><br>
+      <button>Book Now!</button>
+    </div>
+  </body>
+</html>

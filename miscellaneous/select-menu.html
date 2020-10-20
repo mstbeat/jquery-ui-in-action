@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Select Menu</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#jquerys").selectmenu({
+          icons:{
+            button:"ui-icon-plus"
+          },
+          width: 200,
+          position:{
+            at:"left+100 top+200"
+          }
+        });
+        $("#btnOpen").click(function() {
+          $("#jquerys").selectmenu("open");
+        });
+        $("#btnClose").click(function() {
+          $("#jquerys").selectmenu("close");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <select id="jquerys">
+      <option value="jquery">jQuery</option>
+      <option value="ui">jQuery UI</option>
+      <option value="mobile">jQuery Mobile</option>
+    </select>
+    <button id="btnOpen">Open</button>
+    <button id="btnClose">Close</button>
+  </body>
+</html>

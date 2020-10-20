@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Buttons</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#btnButton, #btnSubmit, #btnLink").button();
+        $("#btnButton, #btnSubmit, #btnLink").click(function() {
+          alert("You clicked the element with id " + $(this).attr("id"));
+        });
+        $("#btnButton").button({
+          icon:"ui-icon-tag",
+          iconPosition:"end",
+          label:"Using Option"
+        });
+        $("#btnSubmit").button({
+          disabled:true
+        });
+        $("#btnLink").button({
+          icon:"ui-icon-note",
+          showLabel:false
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <button id="btnButton">Normal</button>
+      <input type="submit" id="btnSubmit" value="Submit">
+      <a id="btnLink">Link</a>
+    </form>
+  </body>
+</html>

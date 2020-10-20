@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Widget: Checkbox Radio</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("input").checkboxradio({
+          icon:true
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Radio Buttons</legend>
+      <input type="radio" id="jquery" name="jquerys" />
+      <label for="jquery">jQuery</label>
+      <input type="radio" id="ui" name="jquerys" />
+      <label for="ui">jQuery UI</label>
+      <input type="radio" id="mobile" name="jquerys" />
+      <label for="mobile">jQuery Mobile</label>
+    </fieldset>
+    <fieldset>
+      <legend>Checkboxes</legend>
+      <input type="checkbox" id="jquery1" />
+      <label for="jquery1">jQuery</label>
+      <input type="checkbox" id="ui1" />
+      <label for="ui1">jQuery UI</label>
+      <input type="checkbox" id="mobile1" />
+      <label for="mobile1">jQuery Mobile</label><br>
+    </fieldset>
+  </body>
+</html>
