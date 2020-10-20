@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>首相マッチングゲーム</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+      #images, #droparea {
+        float: left;
+        width: 100%;
+        padding: 50px;
+      }
+      #images div, #droparea div {
+        width: 130px;
+        height: 130px;
+        border: 4px solid black;
+        float: left;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        background: white;
+        text-align: center;
+        cursor: pointer;
+        font-size: 20px;
+      }
+      #droparea div {
+        line-height: 130px;
+      }
+      #images div img {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+    <script>
+      var score = 0;
+      var imagesArr = [
+        "images/福田康夫.jpg",
+        "images/橋本龍太郎.jpg",
+        "images/鳩山由紀夫.jpg",
+        "images/菅直人.jpg",
+        "images/森喜朗.jpg",
+        "images/野田佳彦.jpg",
+        "images/小渕恵三.jpg"
+      ];
+      var namesArr = [
+        "野田佳彦",
+        "菅直人",
+        "鳩山由紀夫",
+        "福田康夫",
+        "森喜朗",
+        "小渕恵三",
+        "橋本龍太郎"
+      ];
+      $(document).ready(function(){
+        shuffle(imagesArr);
+        $.each(imagesArr, function(index, value) {
+          var image = value.slice(7,-4);
+          $("<div><img src=" + value + " /></div>")
+          .appendTo("#images")
+          .draggable({
+            revert:true,
+            scope:image
+          });
+        })
+        shuffle(namesArr);
+        $.each(namesArr, function(index, value) {
+          $("<div>" + value + "</div>")
+          .appendTo("#droparea")
+          .droppable({
+            scope:value,
+            drop:function(event, ui) {
+              $(ui.draggable).append("<br>" + $(this).text());
+              score++;
+              $(this).hide("puff", "fast");
+
+              if(score == imagesArr.length) {
+                $("<div><p>全問正解です！<br>もう一度プレーしますか？</p></div>").dialog({
+                  modal:true,
+                  buttons:[
+                    {
+                      text:"はい",
+                      click:function() {
+                        window.location.reload();
+                      }
+                    },
+                    {
+                      text:"いいえ",
+                      click:function() {
+                      $(this).dialog("close");
+                      }
+                    }
+                  ]
+                });
+              }
+            }
+          });
+        })
+      });
+
+      function shuffle(arr) {
+        return arr.sort(function() {
+          return .5 - Math.random();
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="images"></div>
+    <div id="droparea"></div>
+  </body>
+</html>
