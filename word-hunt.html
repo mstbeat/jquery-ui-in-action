@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Word Hunt</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+      #container {
+        width: 810px;
+        height: 650px;
+        margin: 0px auto;
+      }
+      #buttons {
+        list-style: none;
+        text-align: center;
+      }
+      #btnReset {
+        width: 100px;
+        border: 1px solid black;
+        border-radius: 5px;
+        font-size: 20px;
+        padding: 5px;
+        display: none;
+      }
+      #words {
+        width: 200px;
+        height: 575px;
+        border: 1px solid black;
+        font-size: 25px;
+        text-align: center;
+        float: left;
+        color: darkolivegreen;
+        display: none;
+      }
+      #grid {
+        height: 575px;
+        width: 585px;
+        float: right;
+        display: none;
+      }
+      .ui-dialog-titlebar-close {
+        visibility: hidden;
+      }
+      .letter {
+        width: 40px;
+        height: 40px;
+        border: 1px solid black;
+        float: left;
+        text-align: center;
+        font-size: 25px;
+        margin: 3px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 1px gray;
+      }
+    </style>
+    <script>
+      var myWords = ["CAT", "COW", "HEN", "PEACOCK", "DOG", "GOAT", "LION", "TIGER", "DUCK"];
+      $(document).ready(function(){
+        $("#message").dialog({
+          title:"RULES",
+          position:{at:"center top"},
+          buttons:[{
+            text:"OK",
+            click:function() {
+              $(this).dialog("close");
+              arrangeGame();
+            }
+          }]
+        });
+        $("#message").text("1. Words are displayed either horizontally or vertically. \n2. Select the correct letters by dragging using your mouse.")
+      });
+
+      function arrangeGame() {
+        $("#btnReset").show();
+        $("#words").show();
+        $("#grid").show();
+        $.each(myWords, function (key, item) {
+          $("#words").append("<p>" + item +"</p>");
+        });
+        for(var i = 1; i <= 12; i++) {
+          for(var j = 1; j <= 12; j++) {
+            $("#grid").append("<div class='letter' data-row=" + i + " data-column=" + j + "></div>");
+          }
+        }
+        placeWords();
+      };
+      function placeWords() {
+        var orientations = ["horizontal", "vertical"];
+        for(var i = 0; i < myWords.length; i++) {
+          var myOrientation = orientations[Math.floor(Math.random()*orientations.length)];
+          var start = Math.floor(Math.random()*$(".letter").length);
+          console.log(myWords[i] + " : " + myOrientation + " : " + start);
+          var characters = myWords[i].split("");
+          console.log(characters);
+
+          var nextLetter = 0;
+          var nextPosition = 0;
+          if(myOrientation == "horizontal") {
+            nextLetter = 1;
+          } else if(myOrientation == "vertical") {
+            nextLetter = 12;
+          }
+
+          $.each(characters, function(key, item) {
+            $(".letter:eq(" + (start + nextPosition) + ")").html(item);
+            nextPosition += nextLetter;
+          });
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <ul id="buttons">
+        <li><button id="btnReset">Reset</button></li>
+      </ul>
+      <div id="words"></div>
+      <div id="grid"></div>
+      <div id="message"></div>
+    </div>
+  </body>
+</html>
