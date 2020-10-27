@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Color Picker</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+      #container {
+        width: 350px;
+        height: 450px;
+        border: 5px solid silver;
+        border-radius: 20px;
+        margin: 50px auto;
+      }
+      h3 {
+        font-size: 30px;
+        text-align: center;
+        color: purple;
+      }
+      #red, #green, #blue {
+        width: 300px;
+        margin: 0 0 30px 20px;
+      }
+      #box {
+        width: 125px;
+        height: 125px;
+        border: 2px solid black;
+        margin: 0px auto;
+      }
+      p {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+      #red .ui-slider-range, #red .ui-slider-handle {
+        background: red;
+      }
+      #green .ui-slider-range, #green .ui-slider-handle {
+        background: green;
+      }
+      #blue .ui-slider-range, #blue .ui-slider-handle {
+        background: blue;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        $("#red, #green, #blue").slider({
+          range:"min",
+          max:255,
+          slide:changeColor,
+          change:changeColor
+        });
+        $("#red").slider("value", 64);
+        $("#green").slider("value", 128);
+        $("#blue").slider("value", 255);
+      });
+
+      function changeColor() {
+        var red = $("#red").slider("value");
+        var green = $("#green").slider("value");
+        var blue = $("#blue").slider("value");
+        var color = convertToHex(red, green, blue);
+        $("p").text("COLOR: #" + color);
+        $("#box").css("background", "#" + color);
+      };
+
+      function convertToHex(r, g, b) {
+        var hex = [r.toString(16), g.toString(16), b.toString(16)];
+        $.each(hex, function(index, value) {
+          if(value.length == 1) {
+            hex[index] = "0" + value;
+          }
+        });
+        return hex.join("").toUpperCase();
+      };
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <h3>Simple Color Picker</h3>
+      <div id="red"></div>
+      <div id="green"></div>
+      <div id="blue"></div>
+      <div id="box"></div>
+      <p id="color"></p>
+    </div>
+  </body>
+</html>
